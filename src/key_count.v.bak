@@ -1,0 +1,28 @@
+module key_count(
+   input wire clk,
+	input wire rst_n,
+	input wire [3:0] key,
+	
+	input reg [19:0] number
+)
+always@(posedge clk or negedge rst_n)begin
+  if(!rst_n)begin
+    number<=20'd0;
+  end
+  else if(key[0])begin
+    number<=number+1'd1;
+  end
+  else if(key[1])begin
+    number<=number+2'd3;
+  end
+  else if(key[2])begin
+    number<=number+3'd5;
+  end
+  else if(key[3])begin
+    number<=number+3'd7;
+  end
+  else begin
+	number<=number;
+  end
+end
+endmodule
